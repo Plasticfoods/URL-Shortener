@@ -1,9 +1,9 @@
-const validateUrl = require('../utils/validateUrl')
 const dotenv = require('dotenv')
 dotenv.config({ path: '../.env' })
+const validateUrl = require('../utils/validateUrl')
+const generateUniqueId = require('../utils/generateUniqueId')
 const Url = require('../models/Url')
 const express = require('express')
-const { nanoid } = require('nanoid')
 const router = express.Router()
 
 // create short urls
@@ -16,26 +16,34 @@ router.post('/short-url', async (req, res) => {
         res.status(400).json({msg: 'Invalid url'})
         return
     }
-
-    // checking if short url is already present
-    const urlObject = await Url.findOne({originalUrl: fullUrl})
-    if(urlObject) {
-        const shortUrl = `${base}/${urlObject.urlId}`
-        res.status(200).json({msg: shortUrl, clicks: urlObject.clicks})
-        console.log('Url already present')
-        return
+    
+    try {
+        // checking if original url is already present
+        const urlObject = await Url.findOne({originalUrl: fullUrl})
+        if(urlObject) {
+            const shortUrl = `${base}/${urlObject.urlId}`
+            res.status(200).json({shortUrl: shortUrl, clicks: urlObject.clicks})
+            console.log('Url already present')
+            return
+        }
+    
+        // creating short url using nanoid
+        const urlId = await generateUniqueId()
+        console.log(urlId)
+        const newUrl = new Url({
+            originalUrl: fullUrl,
+            urlId,
+            date: new Date()
+        })
+        await newUrl.save()
+        console.log('New short url created')
+        const shortUrl = `${base}/${urlId}`
+        res.status(200).json({shortUrl: shortUrl, clicks: 1})    
     }
-
-    // creating short url using nanoid
-    const urlId = nanoid(6)
-    const newUrl = new Url({
-        originalUrl: fullUrl,
-        urlId,
-    })
-    await newUrl.save()
-    console.log('Short Url created')
-    const shortUrl = `${base}/${urlId}`
-    res.status(200).json({msg: shortUrl, clicks: 1})
+    catch(err) {
+        console.log(err)
+        res.status(500).json('Server Error')
+    }
 })  
 
 module.exports = router
