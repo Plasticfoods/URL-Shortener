@@ -6,6 +6,7 @@ const Url = require('../models/Url')
 const express = require('express')
 const router = express.Router()
 
+
 // create short urls
 router.post('/short-url', async (req, res) => {
     const { fullUrl } = req.body
@@ -45,5 +46,6 @@ router.post('/short-url', async (req, res) => {
         res.status(500).json('Server Error')
     }
 })  
+
 
 module.exports = router
