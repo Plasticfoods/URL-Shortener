@@ -1,13 +1,55 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Poppins:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ul, li  {
+  list-style: none;
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* Main  */
+
+.cta {
+  background-color: hsl(257, 27%, 26%);
+  height: 10rem;
+  position: relative;
+}
+
+.cta img, source {
+  height:10rem;
+  width: 100%;
+}
+
+.cta .inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+}
+
+.btn-cta {
+  background-color: hsl(180, 66%, 49%);
+  color: whitesmoke;
+  padding: .5rem .8rem;
+  font-weight: 500;
+  font-size: .85rem;
+}
+
+.btn-cta:hover {
+  opacity: .75;
+  transition: all;
+  transition-duration: 200ms;
+}
+
+
