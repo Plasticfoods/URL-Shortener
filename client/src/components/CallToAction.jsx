@@ -7,8 +7,8 @@ export default function CallToAction() {
             <source media="(min-width: 768px)" srcSet={bgDesktop} />
             <img src={bgMobile} alt="" />
         </picture>
-        <div className="inner flex flex-col justify-center items-center gap-3">
-            <h2 className='text-white font-bold text-2xl'>Shorten your link now</h2>
+        <div className="inner flex flex-col justify-center items-center gap-4">
+            <h2 className='text-white font-bold text-2xl text-center'>Shorten your link now</h2>
             <button type="button" className="btn-cta rounded-full">Get Started</button>
         </div>
     </section>
