@@ -102,7 +102,7 @@ header {
 
 main {
   background-color: rgb(239,240,245);
-  padding-top: 7rem;
+  padding-top: 8rem;
   position: relative;
 }
 
@@ -145,7 +145,7 @@ main {
 
 @media (min-width: 768px) {
   main {
-    padding-top: 8rem;
+    padding-top: 6rem;
   }
   .cta {
     background: url('./images/bg-boost-desktop.svg');
@@ -167,7 +167,7 @@ main {
   padding:2.2rem 1.2rem;
 
   position: absolute;
-  top: -14%;
+  top: -4rem;
   left: 50%;
   transform: translate(-50%);
 }
@@ -207,7 +207,7 @@ form .btn-cta {
     background-size: cover;
     width: calc(100% - 8%);
     padding: 2rem 1rem;
-    top: -21.5%;
+    top: -6rem;
   }
   form {
     grid-template-columns: 1fr;
@@ -215,4 +215,68 @@ form .btn-cta {
 }
 
 
+/* List  */
 
+.list-item {
+  background-color: white;
+  border-radius: .375rem;
+  width: 84%;
+  margin: 0 auto;
+  padding: 1rem 1.6rem;
+  display: grid;
+  grid-template-columns: auto 8.5%;
+  gap: 1.2rem
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-copy {
+  font-size: 1.2rem;
+  border-radius: .5rem;
+}
+
+.btn-cross {
+  font-size: 2.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-cross:hover {
+  cursor: pointer;
+}
+
+.short-url {
+  color: hsl(180, 66%, 49%);
+}
+
+.short-url:hover, .full-url:hover {
+   opacity: .5;
+}
+
+@media (max-width: 800px) {
+  .list-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+  }
+
+  .short-url {
+    width: 100%;
+    text-align: start;
+  }
+
+  .btn-copy {
+    width: 100%;
+  }
+}
