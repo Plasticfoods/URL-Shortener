@@ -50,6 +50,10 @@ header {
 
 
 /* Hero */
+.hero {
+  overflow: hidden;
+}
+
 .hero-image {
   width: 130%;
 }
@@ -97,6 +101,7 @@ header {
 
 main {
   background-color: rgb(239,240,245);
+  padding-top: 3rem;
 }
 
 .stats .title {
@@ -107,36 +112,84 @@ main {
 }
 
 .stats .subtitle {
-  width: 30%;
+  max-width: 30rem;
   text-align: center;
   margin: auto;
 }
 
+
 .cta {
+  background: url('./images/bg-boost-mobile.svg');
   background-color: hsl(257, 27%, 26%);
-  height: 11rem;
-  position: relative;
-
-  margin-bottom: 40px;
+  height: 12rem;
+  background-size: contain;
 }
 
-.cta img, source {
-  height:11rem;
-  width: 100%;
+.cta h2 {
+  max-width: 100%;
 }
 
-.cta .inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.cta .btn-cta {
+  padding: .7rem .4rem;
+  font-size: 1rem;
+  width: 9rem;
 }
-
 
 .btn-cta:hover {
   opacity: .75;
   transition: all;
   transition-duration: 200ms;
+}
+
+@media (min-width: 768px) {
+  .cta {
+    background: url('./images/bg-boost-desktop.svg');
+    background-color: hsl(257, 27%, 26%);
+    background-size: cover;
+  }
+}
+
+/* Shortener  */
+.shortener {
+  background: url('./images/bg-shorten-desktop.svg');
+  background-color: hsl(257, 27%, 26%);
+  width: 82%;
+  height: 8rem;
+  margin: auto;
+  padding: 2.2rem 3.5rem;
+  border-radius: .375rem;
+  margin-bottom: 4rem;
+}
+
+form {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+  gap: 1.5rem;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  padding-left: 1rem;
+  border-radius: .375rem;
+}
+
+form .btn-cta {
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: .375rem;
+
+}
+
+.warning {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  form {
+    grid-template-columns: 1fr;
+  }
 }
 
 

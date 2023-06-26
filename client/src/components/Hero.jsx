@@ -1,7 +1,7 @@
 import heroImage from '../images/illustration-working.svg'
 
 export default function Main() {
-    return <section className="hero py-6 lg:pt-7">
+    return <section className="hero py-6 lg:pt-7 lg:pb-15">
         <div className='hero-inner grid gap-7 lg:gap-0 grid-cols-1 lg:grid-cols-2'>
             <picture className="hero-image pl-6 lg:pl-0">
                 <img src={heroImage} alt="" />
