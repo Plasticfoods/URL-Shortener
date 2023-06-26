@@ -52,6 +52,7 @@ header {
 /* Hero */
 .hero {
   overflow: hidden;
+  padding-bottom: 9rem;
 }
 
 .hero-image {
@@ -76,7 +77,7 @@ header {
   .hero {
     padding-left: 9%;
     overflow: hidden;
-    padding-bottom: 4rem;
+    padding-bottom: 8rem;
   }
   .hero-image {
     width: 200%;
@@ -101,7 +102,8 @@ header {
 
 main {
   background-color: rgb(239,240,245);
-  padding-top: 3rem;
+  padding-top: 7rem;
+  position: relative;
 }
 
 .stats .title {
@@ -142,6 +144,9 @@ main {
 }
 
 @media (min-width: 768px) {
+  main {
+    padding-top: 8rem;
+  }
   .cta {
     background: url('./images/bg-boost-desktop.svg');
     background-color: hsl(257, 27%, 26%);
@@ -160,6 +165,11 @@ main {
   display: grid;
   place-items: center;
   padding:2.2rem 1.2rem;
+
+  position: absolute;
+  top: -14%;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .shortener * {
@@ -196,13 +206,11 @@ form .btn-cta {
     background-image: url('./images/bg-shorten-mobile.svg');
     background-size: cover;
     width: calc(100% - 8%);
-    padding: 2rem 1rem
+    padding: 2rem 1rem;
+    top: -21.5%;
   }
   form {
     grid-template-columns: 1fr;
-  }
-  form .btn-cta {
-    
   }
 }
 
