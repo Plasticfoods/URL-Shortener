@@ -1,14 +1,30 @@
 import Shortener from "./Shortener"
 import CallToAction from "./CallToAction"
 import {TiDeleteOutline} from "react-icons/ti"
-import List from "./List"
+import UrlList from "./UrlList"
+import { useState } from "react"
 
 export default function Main() {
+
+    const [links, setLinks] = useState([])
+    const [displayCrossButton, setDisplayCrossButton] = useState(false)
+
+    function addLink(newItem) {
+        setLinks([...links, newItem])
+        setDisplayCrossButton(true)
+        console.log(links)
+    }
+
+    function hideLinks() {
+        setDisplayCrossButton(false)
+        setLinks([])
+    }
+
     return <main>
-        <Shortener />
-        <List />
+        <Shortener addLink={addLink} />
+        <UrlList urlList={links} />
         <div className="flex justify-center">
-            <TiDeleteOutline className="btn-cross" /> 
+            { displayCrossButton && <TiDeleteOutline className="btn-cross" onClick={hideLinks} /> }
         </div>
         <section className="stats pb-11 lg:pb-12">
             <h3 className="title pb-2">Advanced Statistics</h3>

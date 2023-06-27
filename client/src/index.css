@@ -199,6 +199,7 @@ form .btn-cta {
 
 .warning {
   display: none;
+  color: red;
 }
 
 @media (max-width: 900px) {
@@ -232,6 +233,7 @@ form .btn-cta {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* overflow: scroll; */
 }
 
 .btn-copy {
