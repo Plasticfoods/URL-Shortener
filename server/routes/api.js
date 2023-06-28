@@ -24,7 +24,7 @@ router.post('/short-url', async (req, res) => {
         if(urlObject) {
             const shortUrl = `${base}/${urlObject.urlId}`
             res.status(200).json({shortUrl: shortUrl, clicks: urlObject.clicks})
-            console.log('Url already present')
+            console.log('Url already present', base)
             return
         }
     
@@ -37,7 +37,7 @@ router.post('/short-url', async (req, res) => {
             date: new Date()
         })
         await newUrl.save()
-        console.log('New short url created')
+        console.log('New short url created', base)
         const shortUrl = `${base}/${urlId}`
         res.status(200).json({shortUrl: shortUrl, clicks: 1})    
     }
