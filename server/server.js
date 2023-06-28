@@ -17,11 +17,11 @@ app.use('/api/', apiRouter)
 app.use('/', indexRouter)
 
 mongoose.connect(process.env.DATABASE_URL, {
-        useNewUrlParser: true, useUnifiedTopology: true
-    }
+    useNewUrlParser: true, useUnifiedTopology: true
+}
 )
-.then(() => console.log('db connection successfull'))
-.catch((err) => console.log('error in db connection', err));
+    .then(() => console.log('db connection successfull'))
+    .catch((err) => console.log('error in db connection', err));
 
 
 app.listen(PORT, () => { console.log(`Server running on ${PORT}`) })

@@ -145,7 +145,7 @@ main {
 
 @media (min-width: 768px) {
   main {
-    padding-top: 6rem;
+    padding-top: 7rem;
   }
   .cta {
     background: url('./images/bg-boost-desktop.svg');
@@ -259,21 +259,27 @@ form .btn-cta {
    opacity: .5;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .list-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
   }
 
   .links {
     display: flex;
     flex-direction: column;
     gap: .4rem;
+    overflow: hidden;
   }
 
   .short-url {
+    width: 100%;
+    text-align: start;
+  }
+
+  .full-url {
     width: 100%;
     text-align: start;
   }

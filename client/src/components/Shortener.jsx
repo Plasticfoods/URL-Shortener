@@ -11,27 +11,35 @@ export default function Shortener(props) {
     async function handleClick() {
         if(input === '') return;
 
-        const response = await fetch('http://localhost:8080/api/short-url', {
-            method: 'POST',
-            body: JSON.stringify({ fullUrl: input }),
-            headers: {
-                "Content-type": "application/json"
-            },
-        })
-
-        const resObject = await response.json();
-        if(!response.ok) {
-            console.log('response object', resObject)
-            alert(resObject.msg)
-            return;
+        try {
+            const response = await fetch('http://localhost:8080/api/short-url', {
+                method: 'POST',
+                body: JSON.stringify({ fullUrl: input }),
+                headers: {
+                    "Content-type": "application/json"
+                },
+            })
+    
+            const resObject = await response.json();
+            if(!response.ok) {
+                console.log('response object', resObject)
+                alert(resObject.msg)
+                setInput("")
+                return;
+            }
+    
+            const newItem = {
+                fullUrl: input,
+                shortUrl: resObject.shortUrl
+            }
+            props.addLink(newItem)
+            setInput("")
         }
-
-        const newItem = {
-            fullUrl: input,
-            shortUrl: resObject.shortUrl
+        catch(err) {
+            console.log(err)
+            alert('Server Error')
+            setInput("")
         }
-        props.addLink(newItem)
-        setInput("")
     }
 
 

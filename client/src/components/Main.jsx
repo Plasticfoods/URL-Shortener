@@ -2,21 +2,27 @@ import Shortener from "./Shortener"
 import CallToAction from "./CallToAction"
 import {TiDeleteOutline} from "react-icons/ti"
 import UrlList from "./UrlList"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+
+const getLocalStorage = () => {
+    if(!localStorage.getItem('links')) return []
+    return JSON.parse(localStorage.getItem('links'))
+}
 
 export default function Main() {
 
-    const [links, setLinks] = useState([])
-    const [displayCrossButton, setDisplayCrossButton] = useState(false)
+    const [links, setLinks] = useState(getLocalStorage)
+
+    useEffect(() => {
+        localStorage.setItem('links', JSON.stringify(links))
+    }, [links])
 
     function addLink(newItem) {
         setLinks([...links, newItem])
-        setDisplayCrossButton(true)
         console.log(links)
     }
 
     function hideLinks() {
-        setDisplayCrossButton(false)
         setLinks([])
     }
 
@@ -24,7 +30,7 @@ export default function Main() {
         <Shortener addLink={addLink} />
         <UrlList urlList={links} />
         <div className="flex justify-center">
-            { displayCrossButton && <TiDeleteOutline className="btn-cross" onClick={hideLinks} /> }
+            { links.length > 0 && <TiDeleteOutline className="btn-cross" onClick={hideLinks} /> }
         </div>
         <section className="stats pb-11 lg:pb-12">
             <h3 className="title pb-2">Advanced Statistics</h3>
