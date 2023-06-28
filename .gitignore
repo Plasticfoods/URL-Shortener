@@ -1,3 +1,8 @@
+client/design
+client/style-guide.md
+.env
+
+
 # dependencies
 node_modules
 /.pnp
@@ -19,8 +24,3 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-
-client/style-guide.md
-.env
-server/test.js
