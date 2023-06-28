@@ -38,7 +38,7 @@ router.post('/short-url', async (req, res) => {
         })
         await newUrl.save()
         console.log('New short url created')
-        const shortUrl = `${base}${urlId}`
+        const shortUrl = `${base}/${urlId}`
         res.status(200).json({shortUrl: shortUrl, clicks: 1})    
     }
     catch(err) {
