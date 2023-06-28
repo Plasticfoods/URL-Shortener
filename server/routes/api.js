@@ -22,7 +22,7 @@ router.post('/short-url', async (req, res) => {
         // checking if original url is already present
         const urlObject = await Url.findOne({originalUrl: fullUrl})
         if(urlObject) {
-            const shortUrl = `${base}${urlObject.urlId}`
+            const shortUrl = `${base}/${urlObject.urlId}`
             res.status(200).json({shortUrl: shortUrl, clicks: urlObject.clicks})
             console.log('Url already present')
             return
