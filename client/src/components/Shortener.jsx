@@ -1,4 +1,5 @@
 import { useState } from "react"
+const base = 'https://littleurl.onrender.com'
 
 export default function Shortener(props) {
     const [input, setInput] = useState("")
@@ -12,7 +13,7 @@ export default function Shortener(props) {
         if(input === '') return;
 
         try {
-            const response = await fetch('http://localhost:8080/api/short-url', {
+            const response = await fetch(`${base}/api/short-url`, {
                 method: 'POST',
                 body: JSON.stringify({ fullUrl: input }),
                 headers: {
