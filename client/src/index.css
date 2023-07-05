@@ -79,8 +79,8 @@ header {
     overflow: hidden;
     padding-bottom: 8rem;
   }
-  .hero-image {
-    width: 200%;
+  .hero-inner {
+    grid-template-columns: 45% 55%;
   }
   .site-desc {
     grid-column: 1/2;
@@ -89,12 +89,13 @@ header {
   .hero .title {
     text-align: start;
     margin: 0;
-    font-size: 4.5rem;
+    font-size: 5rem;
     line-height: 4.5rem;
   }
   .hero .subtitle {
     text-align: start;
     margin: 0;
+    font-size: 1.1rem;
   }
 }
 
@@ -164,10 +165,10 @@ main {
   border-radius: .375rem;
   display: grid;
   place-items: center;
-  padding:2.2rem 1.2rem;
+  padding:2.5rem 1.5rem;
 
   position: absolute;
-  top: -4rem;
+  top: -4.5rem;
   left: 50%;
   transform: translate(-50%);
 }
@@ -187,7 +188,7 @@ form {
 
 input {
   width: 100%;
-  height: 100%;
+  height: 110%;
   padding: 1rem;
 }
 
