@@ -6,20 +6,21 @@ const router = express.Router()
 
 
 // find and return original url
-router.get('/:urlId', async (req, res) => {
-    const {urlId} = req.params
+router.get('/:shortUrlId', async (req, res) => {
+    const { shortUrlId } = req.params
 
     try {
-        const urlObject = await Url.findOne({urlId})
+        const urlDoc = await Url.findOne({shortUrlId})
         // checking if short url is present
-        if(urlObject === null) {
-            res.status(404).json({msg: 'No Url found'})
+        if(urlDoc === null) {
+            res.status(404).json({message: 'No Url found'})
             return
         } 
 
-        // redirect to the original url and $inc increase the clicks by 1
-        await Url.findByIdAndUpdate(urlObject._id, { $inc: { "clicks" : 1 } })
-        return res.status(200).redirect(urlObject.originalUrl)
+        // $inc increase the clicks by 1
+        await Url.findByIdAndUpdate(urlDoc._id, { $inc: { "clicks" : 1 } })
+        // redirect to the original url
+        return res.status(200).redirect(urlDoc.url)
     }
     catch(err) {
         console.log(err)

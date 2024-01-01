@@ -18,7 +18,7 @@ export default function Shortener(props) {
         try {
             const response = await fetch(`${apiUrl}/api/short-url`, {
                 method: 'POST',
-                body: JSON.stringify({ fullUrl: input }),
+                body: JSON.stringify({ url: input }),
                 headers: {
                     "Content-type": "application/json"
                 },
@@ -34,7 +34,7 @@ export default function Shortener(props) {
             }
 
             const newItem = {
-                fullUrl: input,
+                url: input,
                 shortUrl: data.shortUrl
             }
             props.addLink(newItem)
@@ -63,13 +63,13 @@ export default function Shortener(props) {
             </div>
             <button className="btn-cta" type="button" onClick={handleClick} disabled={loading}>
                 {loading ?
-                    <PulseLoader
+                <PulseLoader
                     color={'white'}
                     cssOverride={override}
                     size={11}
                     aria-label="Loading Spinner"
                     data-testid="loader"
-                    />
+                />
                 : 'Shorten it!'}
             </button>
         </form>

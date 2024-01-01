@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
 const UrlSchema = new mongoose.Schema({
-  urlId: {
+  shortUrlId: {
     type: String,
     required: true,
   },
-  originalUrl: {
+  url: {
     type: String,
     required: true,
   },
@@ -15,8 +15,8 @@ const UrlSchema = new mongoose.Schema({
     default: 0,
   },
   date: {
-    type: String,
-    default: Date.now,
+    type: Date,
+    required: true
   },
 });
 
