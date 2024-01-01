@@ -1,8 +1,10 @@
 import { useState } from "react"
-const base = 'https://littleurl.onrender.com'
+import PulseLoader from "react-spinners/PulseLoader";
+const apiUrl = process.env.REACT_APP_API_URL
 
 export default function Shortener(props) {
     const [input, setInput] = useState("")
+    const [loading, setLoading] = useState(false)
 
     function handleInputChange(e) {
         const { value } = e.target
@@ -10,39 +12,48 @@ export default function Shortener(props) {
     }
 
     async function handleClick() {
-        if(input === '') return;
-
+        if (input === '') return;
+        
+        setLoading(true)
         try {
-            const response = await fetch(`${base}/api/short-url`, {
+            const response = await fetch(`${apiUrl}/api/short-url`, {
                 method: 'POST',
                 body: JSON.stringify({ fullUrl: input }),
                 headers: {
                     "Content-type": "application/json"
                 },
             })
-    
-            const resObject = await response.json();
-            if(!response.ok) {
-                console.log('response object', resObject)
-                alert(resObject.msg)
+            
+            const data = await response.json()
+
+            if (!response.ok) {
+                alert(data.message)
                 setInput("")
+                setLoading(false)
                 return;
             }
-    
+
             const newItem = {
                 fullUrl: input,
-                shortUrl: resObject.shortUrl
+                shortUrl: data.shortUrl
             }
             props.addLink(newItem)
             setInput("")
+            setLoading(false)
         }
-        catch(err) {
+        catch (err) {
             console.log(err)
             alert('Server Error')
             setInput("")
+            setLoading(false)
         }
     }
 
+    const override = {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    }
 
     return <div className="shortener rounded-lg">
         <form className="">
@@ -50,7 +61,17 @@ export default function Shortener(props) {
                 <input type="url" placeholder="Shorten a link here..." id="input" onChange={handleInputChange} value={input} />
                 <p className="warning">Please add a link</p>
             </div>
-            <button className="btn-cta" type="button" onClick={handleClick}>Shorten it!</button>
+            <button className="btn-cta" type="button" onClick={handleClick} disabled={loading}>
+                {loading ?
+                    <PulseLoader
+                    color={'white'}
+                    cssOverride={override}
+                    size={11}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                    />
+                : 'Shorten it!'}
+            </button>
         </form>
     </div>
 }

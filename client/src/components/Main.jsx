@@ -19,7 +19,6 @@ export default function Main() {
 
     function addLink(newItem) {
         setLinks([...links, newItem])
-        console.log(links)
     }
 
     function hideLinks() {

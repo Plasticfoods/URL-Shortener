@@ -14,7 +14,7 @@ router.post('/short-url', async (req, res) => {
 
     // checking if the url is valid or not
     if(!validateUrl(fullUrl)) {
-        res.status(400).json({msg: 'Invalid url'})
+        res.status(400).json({message: 'Invalid URL'})
         return
     }
     
@@ -43,7 +43,7 @@ router.post('/short-url', async (req, res) => {
     }
     catch(err) {
         console.log(err)
-        res.status(500).json('Server Error')
+        res.status(500).json({message: 'Server Error'})
     }
 })  
 

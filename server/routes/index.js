@@ -27,5 +27,8 @@ router.get('/:urlId', async (req, res) => {
     }
 })
 
+router.get('/', (req, res) => {
+    res.json({message: 'Success'})
+})
 
 module.exports = router

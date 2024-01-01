@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "npx nodemon server.js",
     "start": "node server.js",
     "build": "npm install"
   },
@@ -19,6 +19,6 @@
     "nanoid": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^3.0.2"
   }
 }

@@ -1,6 +1,7 @@
 client/design
 client/style-guide.md
-.env
+client/.env
+server/.env
 
 
 # dependencies

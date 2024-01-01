@@ -17,7 +17,7 @@ app.get('/test', (req, res) => {
 // Enable CORS for all origins
 app.use(cors())
 app.use(express.json())
-app.use('/api/', apiRouter)
+app.use('/api', apiRouter)
 app.use('/', indexRouter)
 
 mongoose.connect(process.env.DATABASE_URL, {
