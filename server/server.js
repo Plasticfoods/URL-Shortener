@@ -22,8 +22,7 @@ app.use('/', indexRouter)
 
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true, useUnifiedTopology: true
-}
-)
+})
     .then(() => console.log('Database connection successfull'))
     .catch((err) => console.log('error in db connection', err));
 
