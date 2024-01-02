@@ -16,14 +16,21 @@ export default function Shortener(props) {
         
         setLoading(true)
         try {
-            const response = await fetch(`${apiUrl}/`, {
+            const response = await fetch(`${apiUrl}`, {
                 method: 'POST',
                 body: JSON.stringify({ url: input }),
                 headers: {
                     "Content-type": "application/json"
                 },
             })
-            
+            console.log(response)
+            if(response.status === 404) {
+                alert('Unable to reach server')
+                setInput("")
+                setLoading(false)
+                return;
+            }
+
             const data = await response.json()
 
             if (!response.ok) {
