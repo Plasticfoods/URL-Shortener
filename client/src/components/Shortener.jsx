@@ -23,7 +23,6 @@ export default function Shortener(props) {
                     "Content-type": "application/json"
                 },
             })
-            console.log(response)
             if(response.status === 404) {
                 alert('Unable to reach server')
                 setInput("")
@@ -49,7 +48,6 @@ export default function Shortener(props) {
             setLoading(false)
         }
         catch (err) {
-            console.log(err)
             alert('Server Error')
             setInput("")
             setLoading(false)
