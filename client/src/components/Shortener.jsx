@@ -16,7 +16,7 @@ export default function Shortener(props) {
         
         setLoading(true)
         try {
-            const response = await fetch(`${apiUrl}`, {
+            const response = await fetch(`https://littleurl.onrender.com/`, {
                 method: 'POST',
                 body: JSON.stringify({ url: input }),
                 headers: {
