@@ -16,7 +16,7 @@ export default function Shortener(props) {
         
         setLoading(true)
         try {
-            const response = await fetch(`${apiUrl}/api/short-url`, {
+            const response = await fetch(`${apiUrl}/`, {
                 method: 'POST',
                 body: JSON.stringify({ url: input }),
                 headers: {
